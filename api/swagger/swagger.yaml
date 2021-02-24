@@ -18,39 +18,34 @@ consumes:
 produces:
   - application/json
 paths:
-  /servicio/{tipo}:
-    # binds a127 app logic to a route
+  /servicio:
     x-swagger-router-controller: consultas
     get:
-      description: Returns 'Hello' to the caller
-      # used as the method name of the controller
       operationId: getQuerie
+      description: consulta los marcajes por rango de fechas
       parameters:
-        - name: tipo
-          in: path
-          description: el tipo de servicio
+        - name: rango
+          description: Rango de fechas
+          in: body
           required: true
-          type: string
+          schema:
+            $ref: "#/definitions/Rango"
       responses:
         "200":
           description: Success
           schema:
-            # a pointer to a definition
-            $ref: "#/definitions/HelloWorldResponse"
-        # responses may fall through to errors
+            $ref: "#/definitions/ErrorResponse"
         default:
           description: Error
-          schema:
-            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  HelloWorldResponse:
-    required:
-      - message
+  Rango:
     properties:
-      message:
+      fechaInicio:
+        type: string
+      fechaFin:
         type: string
   ErrorResponse:
     required:

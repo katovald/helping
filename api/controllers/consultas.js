@@ -15,13 +15,13 @@ const knex = require('knex')({
 });
 
 module.exports = {
-    getQuerie : getQuerie//    GET     /servicio/{tipo}
+    getQuerie : getQuerie   //    GET     /servicio/{tipo}
 }
 
 function getQuerie(req, res){
-    let tipo = req.swagger.params.tipo.value;
-    console.log(tipo);
+    let fechas = req.body;
+    console.log(fechas);
     res.status(200).json({
-        "message": secciones
+        messaje : "listo"
     });
 }
