@@ -34,9 +34,11 @@ paths:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/ErrorResponse"
+            type: object
         default:
           description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
