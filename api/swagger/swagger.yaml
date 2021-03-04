@@ -18,10 +18,52 @@ consumes:
 produces:
   - application/json
 paths:
-  /servicio:
+  /servicio/cometra:
     x-swagger-router-controller: consultas
     get:
-      operationId: getQuerie
+      operationId: getQuerieCometra
+      description: consulta los marcajes por rango de fechas
+      parameters:
+        - name: rango
+          description: Rango de fechas
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Rango"
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /servicio/sepsa:
+    x-swagger-router-controller: consultas
+    get:
+      operationId: getQuerieSepsa
+      description: consulta los marcajes por rango de fechas
+      parameters:
+        - name: rango
+          description: Rango de fechas
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Rango"
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /servicio/seguritec:
+    x-swagger-router-controller: consultas
+    get:
+      operationId: getQuerieSeg
       description: consulta los marcajes por rango de fechas
       parameters:
         - name: rango
